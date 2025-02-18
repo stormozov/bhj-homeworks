@@ -7,7 +7,7 @@
     deactivateHole = index =>
       getHole( index ).className = 'hole',
     activateHole = index =>
-      getHole( index ).className = 'hole hole_has-mole',
+      getHole( index ).className = 'hole hole--has-mole',
     next = () => setTimeout(() => {
       if ( !playing ) {
         return;

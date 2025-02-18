@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./task.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <title>Игра-кликер</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo__container">
+          <a href="https://netology.ru/" class="logo__link"></a>
+        </div>
+        <h1 class="header__title">
+            Домашнее задание к занятию 1.1 «Возможности JavaScript в браузере». Игра-кликер.
+        </h1>
+    </header>
+
+    <main class="content">
+        <div class="card">
+            <div class="clicker">
+                <div class="clicker__status">
+                    <p>Всего кликов: <span id="clicker__counter">0</span></p>
+                </div>
+                <img 
+                    src="https://i.postimg.cc/T1bWdf2y/1024px-Pepperidge-Farm-Nantucket-Cookie.jpg" 
+                    alt=""
+                    id="cookie"
+                    class="clicker__cookie"
+                    width="200">
+            </div>
+        </div>
+
+        <div class="card card--note">
+            <p class="card--note__text"><span>Примечание:</span> Кликаем на изображение печеньки</p>
+        </div>
+
+        <div class="card card--btns-wrapper">
+            <button class="reset-counter-btn" id="reset-counter-btn" title="При клике сбросится счетчик до 0">
+                <svg fill="#ffffff" width="16" height="16" viewBox="0 0 448 448">
+                    <path d="m448 149.332031h-106.667969v-21.332031h85.335938v-85.332031h21.332031zm0 0" />
+                    <path
+                        d="m224 448c-123.464844 0-224-100.535156-224-224s100.535156-224 224-224c61.066406 0 118.132812 24.132812 160.667969 68l60.398437 63.332031-15.464844 14.667969-60.269531-63.199219c-38.398437-39.601562-90.132812-61.46875-145.332031-61.46875-111.734375 0-202.667969 90.933594-202.667969 202.667969s90.933594 202.667969 202.667969 202.667969 202.667969-90.933594 202.667969-202.667969h21.332031c0 123.464844-100.535156 224-224 224zm0 0" />
+                </svg>
+                <span>Обнулить счетчик</span>
+            </button>
+
+            <button class="speed-click-btn" id="speed-click-btn" title="При нажатии отобразится скорость клика в секундах">
+                <svg fill="#ffffff" width="16" height="16" viewBox="0 0 24 24">
+                    <g>
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M12 13.333l-9.223 6.149A.5.5 0 0 1 2 19.066V4.934a.5.5 0 0 1 .777-.416L12 10.667V4.934a.5.5 0 0 1 .777-.416l10.599 7.066a.5.5 0 0 1 0 .832l-10.599 7.066a.5.5 0 0 1-.777-.416v-5.733z" />
+                    </g>
+                </svg>
+                <span>Показать скорость клика</span>
+            </button>
+
+            <a href="https://github.com/stormozov" class="author-link" target="_blank" title="Переход на GitHub автора">
+                <svg width="24" height="24" fill="currentColor" class="bi bi-link-45deg"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                    <path
+                        d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                </svg>
+                <span>Автор</span>
+            </a>
+        </div>
+    </main>
+    
+    <script src="task.js"></script>
+</body>
+</html>

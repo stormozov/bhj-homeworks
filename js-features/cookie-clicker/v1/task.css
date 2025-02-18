@@ -1,0 +1,77 @@
+/* Перезапись стандартных стилей из style.css */
+.clicker {
+  text-align: center;
+}
+
+.clicker__status > p {
+  margin: 0;
+}
+
+.clicker__cookie {
+  cursor: pointer;
+}
+
+/* Карточка с примечанием */
+.card.card--note {
+  padding: 0 30px;
+  background-color: transparent;
+
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  color: #b3bdcd;
+
+  cursor: default;
+}
+
+.card--note__text span {
+  font-weight: bold;
+}
+
+/* Карточка с кнопками и ссылками */
+.card--btns-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.author-link {
+  display: flex;
+  gap: 5px;
+
+  color: #000;
+  text-decoration: none;
+}
+
+.author-link,
+.author-link svg,
+.reset-counter-btn svg {
+  transition: all 0.3s ease;
+}
+
+.author-link:hover {
+  color: #06f;
+}
+
+.author-link:hover svg {
+  fill: #06f;
+  transform: rotate(-180deg);
+}
+
+.reset-counter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  width: 100%;
+  margin: 0;
+}
+
+.reset-counter-btn svg {
+  width: 16px;
+}
+
+.reset-counter-btn:hover svg {
+  transform: rotate(360deg);
+}
