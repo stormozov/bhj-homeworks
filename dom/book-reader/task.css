@@ -2,43 +2,34 @@ body {
   margin: 0;
 }
 
-.bg_color_black {
-  background: #000;
-}
-
-.bg_color_gray {
-  background: grey;
-}
-
-.bg_color_white {
-  background: white;
-}
-
-.book_fs-big {
+/* Классы для изменения размера шрифта в читалке */
+.book--fs-big {
   font-size: 20px;
 }
 
-.book_fs-small {
+.book--fs-small {
   font-size: 12px;
 }
 
-.book_color-black {
+/* Классы для изменения цвета шрифта в читалке */
+.book--color-black {
   color: black;
 }
 
-.book_color-gray {
+.book--color-gray {
   color: gray;
 }
 
-.book_color-whitesmoke {
+.book--color-whitesmoke {
   color: whitesmoke;
 }
 
-.book_bg-gray {
+/* Классы для изменения фона в читалке */
+.book--bg-gray {
   background: grey;
 }
 
-.book_bg-black {
+.book--bg-black {
   background: black;
 }
 
@@ -46,15 +37,18 @@ body {
   background: white;
 }
 
+/* Классы для блока управления читалкой */
 .book__controls {
   background: rgb(63, 63, 63);
   padding: 10px;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 100px;
   color: whitesmoke;
-  font-size: 16px;;
+  font-size: 16px;
 }
 
 .book__control {
@@ -72,62 +66,87 @@ body {
   box-sizing: border-box;
 }
 
-.color_active {
+.color--active {
   box-shadow: 0 0 5px white;
   border: 1px solid gray;
 }
 
 .font-size {
-  text-align: center;
-  text-decoration: none;
-  color: whitesmoke;
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding: 2px 6px;
-  font-size: 16px;
-  line-height: 16px;
-  padding: 1px 6px;
-  box-sizing: border-box;
+  /* Отображение и позиционирование */
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  /* Размеры элемента */
+  width: 25px;
+  height: 25px;
+
+  /* Отступы */
+  padding: 1px 6px;
+
+  /* Шрифты */
+  font-size: 16px;
+  line-height: 16px;
+  color: whitesmoke;
+  text-align: center;
+  text-decoration: none;
+
+  /* box-sizing */
+  box-sizing: border-box;
 }
 
-.font-size_small {
+/* Классы для кнопок управления размером шрифта */
+.font-size--small {
   font-size: 12px;
 }
 
-.font-size_big {
+.font-size--big {
   font-size: 20px;
 }
 
-.font-size_active {
+.font-size--active {
   border: 1px solid whitesmoke;
   border-radius: 50%;
 }
 
-.book {
-  font-family: Georgia;
+/* Классы для кнопок управления цветом текста */
+.color--text-black {
+  background: #000;
 }
 
-.book__content {
-  box-sizing: border-box;
-  padding: 20px;
+.color--text-gray {
+  background: grey;
+}
+
+.color--text-whitesmoke {
+  background: whitesmoke;
+}
+
+/* Классы для кнопок управления цветом фона */
+.color--bg-black {
+  background: #000;
+}
+
+.color--bg-gray {
+  background: grey;
+}
+
+.color--bg-white {
+  background: white;
+}
+
+/* Классы для стилизации контентной области читалки */
+.book {
+  font-family: Georgia;
 }
 
 .book p:first-letter {
   font-size: 28px;
 }
 
-.text_color_black {
-  background: #000;
-}
-
-.text_color_gray {
-  background: grey;
-}
-
-.text_color_whitesmoke {
-  background: whitesmoke;
+.book__content {
+  max-width: 990px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }

@@ -2,8 +2,6 @@
   display: none;
 }
 
-.rotator__case_active {
+.rotator__case--active {
   display: inline;
 }
-
-

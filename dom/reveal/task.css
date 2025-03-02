@@ -1,14 +1,32 @@
-.reveal {
-  opacity: 0;
-  transition: 0.3s opacity ease-in-out;
-  background: orange;
-  padding: 20px;
-  min-height: 200px;
-  box-sizing: border-box;
-  color: white;
-  font-size: 24px;
+.container {
+  padding: 35px;
 }
 
-.reveal_active {
+.reveal {
+  /* Положение и отображение */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Размер и отступы */
+  min-height: 200px;
+  padding: 20px;
+  margin: 40px 0;
+  box-sizing: border-box;
+
+  /* Стилизация */
+  background: #ffa500;
+  color: white;
+  font-size: 2rem;
+  opacity: 0;
+  transform: scale(0);
+
+  /* Переходы */
+  transition: 0.5s transform, 0.3s opacity ease-in-out;
+}
+
+.reveal--active {
   opacity: 1;
+  transform: scale(1);
 }
