@@ -2,9 +2,22 @@
   margin-bottom: 20px;
 }
 
+main {
+  margin: 0 15px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
 .has-tooltip {
   color: #000;
   background: yellow;
+  position: relative;
 }
 
 .has-tooltip:hover {
@@ -20,6 +33,31 @@
   color: #fff;
 }
 
-.tooltip_active {
+.tooltip.active {
   display: block;
+}
+
+.has-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: block;
+  height: max-content;
+  max-width: 250px;
+  width: max-content;
+  background: black;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+
+  opacity: 0;
+
+  transition: all 0.3s ease;
+}
+
+.has-tooltip.active::after {
+  /* top: 24px; */
+  opacity: 1;
 }
