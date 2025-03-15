@@ -7,27 +7,34 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Опросы</title>
-  <link rel="stylesheet" href="../../assets/css/style.css" />  
+  <title>Анимация загрузки</title>
   <link rel="stylesheet" href="task.css" />
+  <link rel="stylesheet" href="../../../assets/css/style.css" />
 </head>
 <body>
   <header class="header">
     <h1 class="header__title">
-      Домашнее задание к занятию 3.1 «Асинхронные запросы». Опрос с выбором
-      результатов.
+      Домашнее задание к занятию 3.1 «Асинхронные запросы». Анимация загрузки.
+      данных.
     </h1>
   </header>
 
   <main class="content">
     <div class="card">
-      <div class="poll">
-        <h3 class="poll__title" id="poll__title"></h3>
-        <ul class="poll__answers poll__answers--active" id="poll__answers"></ul>
+      <h1>Курс валют</h1>
+
+      <div class="courses">
+        <ul class="courses__list"></ul>
       </div>
+
+      <img
+        id="loader"
+        class="loader loader--active"
+        src="https://i.postimg.cc/66SGMVs5/mcru-ajax-loader.gif"
+      />
     </div>
   </main>
-  
+
   <script src="task.js"></script>
 </body>
 </html>

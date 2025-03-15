@@ -167,6 +167,11 @@ function findTargetCartItem(cartSelectors, productId) {
  * @returns {Element} - Созданный летающий изображение
  */
 function createFlyingImage(event, productSelectors) {
+  // TODO: Повторяется код. Можно вынести получение элемента изображения
+  // в отдельную функцию и вызывать ее в функции animateProductAddition
+  // один раз, вместо того, чтобы вызывать дважды в разных местах и не
+  // тянуть объект параметров с селекторами в каждую функцию, а передавать
+  // в функции в качестве параметров сразу элемент изображения
   const productParent = event.target.closest(productSelectors.parent);
   const productImage = productParent.querySelector(productSelectors.image);
 

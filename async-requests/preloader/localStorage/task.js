@@ -1,28 +1,81 @@
-/**
- * Алгоритм решения задачи.
- * 
- * При загрузке страницы:
- *   - запросить данные с API
- *   - получить данные и проверить код ответа
- *   - если код ответа не 200, то вывести сообщение об ошибке
- *   - если код ответа 200, то:
- *     - заполнить список курсами,
- *     - скрыть прелоадер.
- */
+/*
+  Поток выполнения:
+  graph TD
+    A[Start] --> B[Загрузить кэш]
+    A --> C[Запустить фоновое обновление]
+    B --> D{Есть кэш?}
+    D -->|Да| E[Показать кэш]
+    D -->|Нет| F[Показать прелоадер]
+    C --> G{Успех?}
+    G -->|Да| H[Обновить интерфейс]
+    G -->|Нет| I[Обработать ошибку]
+
+  Обработка состояний:
+  — При первом посещении: прелоадер → загрузка → анимированное появление
+  — При повторном: мгновенный показ кэша → фоновое обновление
+  — При ошибке: показ кэша или сообщения об ошибке
+*/
 
 /**
  * Инициализация программы по загрузке курсов валют на страницу по API.
  * @param {Object} params - Параметры приложения.
  */
 async function initializePreloader(params) {
+  // Загрузка кэшированных данных (если есть)
+  await loadCachedData(params);
+
+  // Фоновое обновление данных с API
+  fetchAndUpdateData(params).catch(error => {
+    console.error('Ошибка фонового обновления:', error);
+  });
+}
+
+/**
+ * Загрузка кэшированных данных.
+ * @param {Object} params - Параметры приложения.
+ */
+async function loadCachedData(params) {
+  try {
+    const cachedData = localStorage.getItem('cachedCurrencyData');
+    if (!cachedData) return;
+
+    const parsedData = JSON.parse(cachedData);
+    validateExchangeRateResponse(parsedData);
+
+    addCourseItemToList(params.output, parsedData.response.Valute, false);
+    hidePreloader(params.loader);
+  } catch (error) {
+    console.error('Ошибка загрузки из кэша:', error);
+    localStorage.removeItem('cachedCurrencyData');
+  }
+}
+
+/**
+ * Фоновое обновление данных с API.
+ * @param {Object} params - Параметры приложения.
+ */
+async function fetchAndUpdateData(params) {
   try {
     const data = await getDataFromAPI(params.APIUrl);
     validateExchangeRateResponse(data);
-    addCourseItemToList(params.output, data.response.Valute);
-    hidePreloader(params.loader);
+
+    localStorage.setItem('cachedCurrencyData', JSON.stringify(data));
+    updateUIWithFreshData(params, data);
   } catch (error) {
-    console.error('Ошибка при загрузке данных:', error);
+    handleDataError(error, params);
   }
+}
+
+/**
+ * Обновить пользовательский интерфейс с новыми данными.
+ * @param {Object} params - Параметры приложения.
+ * @param {Object} data - Данные, полученные с API.
+ */
+function updateUIWithFreshData(params, data) {
+  const list = document.querySelector(params.output.list);
+  list.innerHTML = '';
+  addCourseItemToList(params.output, data.response.Valute, true);
+  hidePreloader(params.loader);
 }
 
 /**
@@ -50,17 +103,24 @@ function getDataFromAPI(url) {
 
 /**
  * Добавить полученный список курсов валют в список на странице.
+ * 
  * @param {Object} outputParams - Параметры вывода курсов валют на страницу.
  * @param {Object} data - Данные, полученные с API.
+ * @param {boolean} useDelay - Флаг использования задержки.
  */
-function addCourseItemToList(outputParams, data) {
+function addCourseItemToList(outputParams, data, useDelay = true) {
+  const list = document.querySelector(outputParams.list);
+  list.innerHTML = '';
+
   const dataKeys = Object.keys(data);
-  
+
   dataKeys.forEach((key, index) => {
-    setTimeout(() => {
+    const addItem = () => {
       const item = createCourseItem(outputParams.item, data, key);
-      document.querySelector(outputParams.list).appendChild(item);
-    }, index * 100);
+      list.appendChild(item);
+    };
+
+    useDelay ? setTimeout(addItem, index * 100) : addItem();
   });
 }
 
@@ -102,6 +162,20 @@ function createCourseItem(outputParams, data, itemKey) {
  */
 function hidePreloader({ element, activeClass }) {
   document.querySelector(element).classList.remove(activeClass);
+}
+
+/**
+ * Обработать ошибку получения данных.
+ * @param {Error} error - Ошибка.
+ * @param {Object} params - Параметры приложения.
+ */
+function handleDataError(error, params) {
+  console.error('Ошибка получения данных:', error);
+  if (!localStorage.getItem('cachedCurrencyData')) {
+    const list = document.querySelector(params.output.list);
+    list.innerHTML = `<li>Не удалось загрузить данные</li>`;
+    hidePreloader(params.loader);
+  }
 }
 
 /**

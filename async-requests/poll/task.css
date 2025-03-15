@@ -9,3 +9,30 @@ body {
 .poll__title {
   margin-bottom: 20px;
 }
+
+.poll__answers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.poll__answers--active {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.poll__button {
+  margin: 0;
+}
+
+.poll__answer span {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.card--countdown {
+  text-align: center;
+  color: gray;
+  cursor: default;
+}

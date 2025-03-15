@@ -38,15 +38,114 @@ button {
 .input__wrapper-button {
   font-family: Golos, Arial, sans-serif;
   font-size: 14px;
-  color: #fff;
-  background-color: #06f;
+  color: black;
+  background-color: #e2e2e2;
   border: 1px solid transparent;
   border-radius: 2px;
   box-sizing: border-box;
   cursor: pointer;
   padding: 8px 12px;
+  transition: 0.3s ease;
 }
 
 .input__wrapper-button:hover {
-  background-color: #005ce6;
+  background-color: #f0f0f0;
 }
+
+/* preview */
+.file-preview {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.preview-container {
+  position: relative;
+  display: inline-block;
+}
+
+.preview-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 24px;
+  color: #ffffff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.preview-container:hover .preview-close-btn {
+  opacity: 1;
+}
+
+/* progressbar */
+.preview-container {
+  text-align: center;
+}
+
+.custom-progress {
+  width: 100%;
+  height: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #4CAF50;
+  
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}
+
+/* drag and drop */
+.form-drop-zone {
+  position: relative;
+  transition: all 0.3s ease;
+  border: 2px dashed #cccccc;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  background: #f8f9fa;
+}
+
+.form-drop-zone.dragover {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+  transform: scale(1.02);
+}
+
+.form-drop-zone.dragover::after {
+  content: "Отпустите файл для загрузки";
+
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  
+  transform: translateX(-50%);
+
+  font-size: 0.9rem;
+  color: #4CAF50;
+}
+
+/* .drag-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  pointer-events: none;
+  border: 4px dashed #4CAF50;
+}
+
+.dragover .drag-overlay {
+  display: block;
+} */
