@@ -11,34 +11,50 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo__container">
-          <a href="https://netology.ru/" class="logo__link"></a>
-        </div>
         <h1 class="header__title">
             Домашнее задание к занятию 3.2 «Хранение состояния на клиенте». Авторизация.
         </h1>
     </header>
+
     <main class="content">
         <div class="card">
-            <div class="signin signin_active" id="signin">
+            <div class="signin signin--active" id="signin">
                 <h2 class="title">Вход</h2>
-                <form action="https://students.netoservices.ru/nestjs-backend/auth" id="signin__form">
+                
+                <form action="https://students.netoservices.ru/nestjs-backend/auth" id="signin-form">
                     <div class="row">
-                        <input type="text" name="login" class="control" placeholder="Логин">
+                        <input type="text" name="login" class="control" placeholder="Логин" required>
                     </div>
+
                     <div class="row">
-                        <input type="password" name="password" class="control" placeholder="Пароль">
+                        <div class="password-container">
+                            <input type="password" name="password" class="control" placeholder="Пароль" required>
+                            <button type="button" class="toggle-password" aria-label="Показать пароль">
+                                <svg class="eye-icon active" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg class="eye-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <path d="M1 1l22 22" stroke="currentColor" stroke-width="2" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
+
                     <div class="row">
-                        <button class="btn" id="signin__btn">Войти</button>
+                        <button class="btn" id="signin-btn" type="submit">Войти</button>
                     </div>
                 </form>
             </div>
+            
             <div class="welcome" id="welcome">
-                Добро пожаловать, пользователь #<span id="user_id"></span>
+                <p>Добро пожаловать, пользователь #<span id="user-id"></span></p>
+                <button class="btn" id="signout-btn">Выход</button>
             </div>
         </div>
-        </main>
+    </main>
+
     <script src="task.js"></script>
 </body>
 </html>

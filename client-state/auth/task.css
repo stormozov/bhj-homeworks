@@ -1,9 +1,11 @@
 .signin {
   display: none;
 }
-.signin_active {
+
+.signin--active {
   display: block;
 }
+
 .control {
     width: 100%;
     display: block;
@@ -12,6 +14,42 @@
     font-family: Golos, Arial, sans-serif;
     border: 1px solid #e2e2e2;
     box-sizing: border-box;
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  cursor: pointer;
+
+  background: none;
+  border: none;
+  padding: 5px;
+
+  color: #666;
+}
+
+.toggle-password:hover {
+  background: none;
+  color: #333;
+}
+
+.eye-icon {
+  display: none;
+}
+
+.eye-icon.active {
+  display: block;
+}
+
+.animate-toggle {
+  animation: buttonScale 0.3s ease;
 }
 
 .btn {
@@ -41,7 +79,57 @@
   display: none;
 }
 
-.welcome_active {
+.welcome--active {
   display: block;
   text-align: center;
+}
+
+#user-id {
+  font-weight: bold;
+}
+
+.error-message {
+  color: #f00;
+}
+
+.slide-in {
+  animation: slideIn 0.4s forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.4s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes buttonScale {
+  50% {
+    transform: translateY(-50%) scale(1.2);
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
 }
